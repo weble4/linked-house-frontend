@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Linked-House
+*Front Repository*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 프로젝트 개요
+Weble4 팀의 프로젝트 linked-house front는 airbnb 모델을 벤치마킹하여, 숙박 공유 사이트를 만드는 것을 목표로 합니다.
+프론트에서는 백엔드와의 API 통신을 통해 데이터를 가지고와 화면을 구성합니다..
 
-## Available Scripts
+* * *
 
-In the project directory, you can run:
+### **📅** 프로젝트 기간
 
-### `npm start`
+프론트 구현 기간 
+2023.08.31 ~ 2023.09
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* * *
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 팀원 소개
 
-### `npm test`
+```java
+이찬희 = programmer(Team weble4, Project linkedhouse)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```java
+민세기 = programmer(Team weble4, Project linkedhouse)
+```
 
-### `npm run build`
+```java
+김지민 = programmer(Team weble4, Project linkedhouse)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```java
+김승용 = programmer(Team weble4, Project linkedhouse)
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* * *
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 기술 스택
+- Frontend
 
-### `npm run eject`
+ React, tailwind, axios 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- CI/CD, CLOUD
+<img alt="git" src ="https://img.shields.io/badge/git-F05032.svg?&style=for-the-badge&logo=git&logoColor=black"/>
+<img alt="github" src ="https://img.shields.io/badge/github-181717.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+<img alt="github action" src ="https://img.shields.io/badge/github-181717.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+<img alt="docker" src ="https://img.shields.io/badge/docker-2496ED.svg?&style=for-the-badge&logo=docker&logoColor=white"/>
+<img alt="naver" src ="https://img.shields.io/badge/naver cloud-03C75A.svg?&style=for-the-badge&logo=naver&logoColor=white"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* * *
+### 메뉴트리
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<image src="./images/menutree.png"></image>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ [UI, UX 프로토타입 보러가기](https://www.figma.com/file/FB2dkLEj9lk23AZo9OIgFp/LinkedHouse?type=design&node-id=0-1&mode=design&t=Vwpq5MDkZEqVXVUX-0)
 
-## Learn More
+* * *
+### 아키텍쳐
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<image src="./images/architecture.png"></image>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* * *
 
-### Code Splitting
+### Git Commit 전략 & 워크플로우 및 컨벤션
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[워크플로우 및 깃 커밋 전략 링크](https://www.notion.so/754a694747884d369ee42da947ae089b?pvs=4)  
 
-### Analyzing the Bundle Size
+[컨벤션 정리 링크](https://www.notion.so/f645a6ae98ae46d08fdcaa8c4a10dacf?pvs=4)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* * *
 
-### Making a Progressive Web App
+### 프론트 엔드 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* * *
