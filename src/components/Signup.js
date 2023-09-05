@@ -86,13 +86,18 @@ function Signup() {
       );
       if (response.status === 200) {
         console.log(response);
-          const responseData = response.data.response; // Adjust this based on the actual response structure
-          window.alert( `${JSON.stringify(responseData)}`);
-          navigate("/login");
+        const responseData = response.data.response; // Adjust this based on the actual response structure
+        window.alert(`${JSON.stringify(responseData)}`);
+        navigate("/login");
       }
     } catch (error) {
-        const responseMessage = error.response.data.message;
+      const responseMessage = error.response.data.message;
+      if (responseMessage != null) {
         window.alert(`${JSON.stringify(responseMessage)}`);
+      } else {
+        window.alert("다시 입력을 진행하세요")
+      }
+      
     }
   };
 
