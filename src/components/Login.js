@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ onLogin }) => {
+const Login = ({ isLoggedIn, onLogin }) => {
   const [customerEmail, setCustomerId] = useState("");
   const [customerPw, setCustomerPw] = useState("");
   const [error, setError] = useState("");
@@ -43,13 +43,14 @@ const Login = ({ onLogin }) => {
       );
 
       if (response.status === 200) {
-        const token = response.data.token;
-        localStorage.setItem("accessToken", token.accessToken);
-        localStorage.setItem("refreshToken", token.refreshToken);
+        const data = response.data;
+        localStorage.setItem("accessToken", data.token.accessToken);
+        localStorage.setItem("refreshToken", data.token.refreshToken);
         localStorage.setItem(
           "tokenExpiration",
-          Date.now() + token.accessTokenExpiresIn
+          Date.now() + data.token.accessTokenExpiresIn
         );
+        localStorage.setItem("role", data.role)
         onLogin();
         navigate("/");
       } else {
@@ -71,7 +72,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="p-8 bg-white rounded shadow-md w-96 h-96">
-        <h1 className="text-2xl font-bold mb-7">Login</h1>
+        <h1 className="text-2xl font-bold mb-7">로그인</h1>
         {error && <div className="text-red-500 mb-2">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-7">

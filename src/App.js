@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Main from "./components/Main";
 import Certified from "./components/Certified";
+import HostPages from "./components/host/HostPages";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -22,10 +23,11 @@ const App = () => {
       <div className="app">
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
+          <Route path="" element={<Main />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="" element={<Main />} />
           <Route path="/certified" element={<Certified />} />
+          <Route path="/host-settings" element={<HostPages />} />
         </Routes>
       </div>
     </Router>
