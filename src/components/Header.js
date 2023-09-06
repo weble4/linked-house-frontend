@@ -85,6 +85,13 @@ const Header = ({ isLoggedIn, onLogout }) => {
             Login
           </Link>
         )}
+
+          <Link
+            to="/account-settings"
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            User
+          </Link>
       </nav>
     </header>
   );
