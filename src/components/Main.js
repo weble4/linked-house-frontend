@@ -1,11 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import SearchModal from "./modal/SearchModal";
 
 const Main = () => {
+    // Modal 관련
+    const [showModal, setShowModal] = useState(false);
+
     const handleScroll = () => {
         const imageList = document.querySelector(".image-list");
         if (imageList) {
             imageList.scrollLeft += 100; // 이미지가 왼쪽으로 스크롤되도록
         }
+    };
+
+    // 클릭 이벤트 핸들러 모달 열기
+    const openModal = () => {
+        setShowModal(true);
     };
 
     useEffect(() => {
@@ -32,27 +41,33 @@ const Main = () => {
                 {/** 검색창
                  * Todo : 침대수, 방갯수, 지역 별 검색
                  */}
-                <form className="max-w-l px-20" action="/houses/" method="GET">
-                    <div className="relative">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
-                        </svg>
+                <div className="max-w-l px-20">
+                    <div className="max-w-l px-20">
+                        <div className="relative">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
 
-                        {/** Todo : Modal창 띄우기 */}
-                        <button className="rounded-lg w-full py-10 pl-12 pr-4 border bg-blue-100"></button>
-                    </div>
-                </form>{" "}
+                            {/* 모달 열기 버튼 */}
+                            <button className="rounded-lg w-full py-10 pl-12 pr-4 border bg-blue-100" onClick={openModal}>
+                                검색
+                            </button>
+                        </div>
+                    </div>{" "}
+                    {/* 모달 열기 상태에 따라 모달 컴포넌트 렌더링 */}
+                </div>{" "}
+                {showModal && <SearchModal setShowModal={setShowModal} />}
             </div>
 
             {/** Todo: 클릭으로 스크롤시 옆으로, 클릭 떼면 스크롤 풀림, 단건 클릭시 이동 */}
