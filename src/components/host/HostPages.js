@@ -6,7 +6,7 @@ const HostPages = () => {
     <div className="flex justify-center mt-16">
       <div className="grid grid-cols-2 gap-10">
         <Link
-          to="/accommodation-management"
+          to="/host-settings/house-management"
           className="p-8 bg-white rounded-xl shadow-xl hover:bg-gray-100 h-60 flex flex-col justify-between"
         >
           <h2 className="text-2xl font-semibold mb-4">하우스 관리</h2>
