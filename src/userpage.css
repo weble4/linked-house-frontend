@@ -1,0 +1,40 @@
+.h1 {
+  text-align: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.square {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; /* 아이템을 가로로 정렬 */
+    width: 250px;
+    gap: 10px;
+  
+    margin: 0 auto;
+    width: 250px; 
+    height: 150px; 
+    background-color: #dffb61; 
+    margin: 10px; 
+    border: 2px solid #000;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
