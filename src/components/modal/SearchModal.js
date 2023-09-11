@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LocationData, renderLocation } from "./LocationData";
-import AutoComplete from "./AutoComplete";
 
 const SearchModal = ({ setShowModal }) => {
     // 인원수 등 조건 증감 관련
@@ -10,6 +8,7 @@ const SearchModal = ({ setShowModal }) => {
     const [room, setRoom] = useState(1);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [minPrice, setMinPrice] = useState(0);
+    const [filterKeyword, setFilterKeyword] = useState("");
 
     const bedMinusCount = () => {
         if (bed === 1) {
@@ -46,17 +45,6 @@ const SearchModal = ({ setShowModal }) => {
         }
     }, [room, bed]);
 
-    // 지역 자동완성
-    const [locationValue, setLocationValue] = useState("");
-
-    const handleLocationChange = (e, val) => {
-        setLocationValue(val);
-    };
-
-    const handleLocationSelect = (val) => {
-        setLocationValue(val);
-    };
-
     // 결과창으로 이동하는 라우터
     const navigate = useNavigate();
 
@@ -65,7 +53,7 @@ const SearchModal = ({ setShowModal }) => {
         e.preventDefault();
 
         const url = "http://localhost:8080/api/house";
-        const params = `?filterKeyword=${LocationData}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+        const params = `?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
 
         try {
             const response = await axios.get(url + params, {
@@ -77,7 +65,7 @@ const SearchModal = ({ setShowModal }) => {
             const data = response.data;
             console.log("반환 데이터 : ", data);
 
-            const searchResult = `/api/house/?filterKeyword=${LocationData}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+            const searchResult = `/api/house/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
             navigate(searchResult);
         } catch (error) {
             console.log("검색에 실패했습니다.");
@@ -96,18 +84,58 @@ const SearchModal = ({ setShowModal }) => {
                         </div>
                         {/*body*/}
                         <div className="relative p-6 flex-auto">
-                            <AutoComplete
-                                value={locationValue}
-                                items={LocationData()}
-                                getItemValue={(item) => item.filterKeyword}
-                                shouldItemRender={renderLocation}
-                                renderMenu={(items) => <div className="dropdown">{items}</div>}
-                                renderItem={(item, isHighlighted) => (
-                                    <div className={`item ${isHighlighted ? "selected-item" : ""}`}>{item.filterKeyword}</div>
-                                )}
-                                onChange={handleLocationChange}
-                                onSelect={handleLocationSelect}
-                            />
+                            <div>
+                                <span className="mx-8">지역 선택</span>
+                                <select
+                                    className="px-16 py-3 border rounded-md"
+                                    id="filterKeyword"
+                                    onChange={(e) => setFilterKeyword(e.target.value)}
+                                    value={filterKeyword}
+                                >
+                                    <option key="seoul" value="seoul">
+                                        서울
+                                    </option>
+                                    <option key="sejong" value="sejong">
+                                        세종
+                                    </option>
+                                    <option key="incheon" value="incheon">
+                                        인천
+                                    </option>
+                                    <option key="daejeon" value="daejeon">
+                                        대전
+                                    </option>
+                                    <option key="gwangju" value="gwangju">
+                                        광주
+                                    </option>
+                                    <option key="busan" value="busan">
+                                        부산
+                                    </option>
+                                    <option key="daegu" value="daegu">
+                                        대구
+                                    </option>
+                                    <option key="ulsan" value="ulsan">
+                                        울산
+                                    </option>
+                                    <option key="gyeonggido" value="gyeonggido">
+                                        경기도
+                                    </option>
+                                    <option key="gangwondo" value="gangwondo">
+                                        강원도
+                                    </option>
+                                    <option key="chungcheongdo" value="chungcheongdo">
+                                        충청도
+                                    </option>
+                                    <option key="jeollado" value="jeollado">
+                                        전라도
+                                    </option>
+                                    <option key="gyeongsangdo" value="gyeongsangdo">
+                                        경상도
+                                    </option>
+                                    <option key="jeju" value="jeju">
+                                        제주도
+                                    </option>
+                                </select>
+                            </div>
                             <div>
                                 <span className="mx-8">방 갯수</span>
 
