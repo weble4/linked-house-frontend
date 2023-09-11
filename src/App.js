@@ -12,6 +12,9 @@ import Private from './components/Private';
 import ProfileEditor from './components/ProfileEditor';
 import BookmarkList from './components/BookmarkList';
 import './userpage.css';
+import './private.css';
+import './profileEditor.css';
+import './bookmark.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
