@@ -8,7 +8,7 @@ const SearchModal = ({ setShowModal }) => {
     const [room, setRoom] = useState(1);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [minPrice, setMinPrice] = useState(0);
-    const [filterKeyword, setFilterKeyword] = useState("");
+    const [filterKeyword, setFilterKeyword] = useState("seoul");
 
     const bedMinusCount = () => {
         if (bed === 1) {
