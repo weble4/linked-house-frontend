@@ -80,24 +80,34 @@ function Signup() {
     }
 
     try {
+      window.alert("이메일 발송 중입니다..알림창을 끄고 잠시만 기다려주세요");
+
       const response = await axios.post(
         "http://localhost:8080/api/customers/signup",
         formData
       );
+
       if (response.status === 200) {
-        console.log(response);
-        const responseData = response.data.response; // Adjust this based on the actual response structure
+        const responseData = response.data.response;
         window.alert(`${JSON.stringify(responseData)}`);
         navigate("/login");
       }
     } catch (error) {
-      const responseMessage = error.response.data.message;
+      const responseMessage = error.response.data.validation;
       if (responseMessage != null) {
-        window.alert(`${JSON.stringify(responseMessage)}`);
+        const validationMessages = [];
+
+        for (const field in responseMessage) {
+          if (responseMessage.hasOwnProperty(field)) {
+            const message = responseMessage[field];
+            validationMessages.push(`${field}: ${message}`);
+          }
+        }
+        const formattedMessages = validationMessages.join("\n");
+        window.alert(formattedMessages);
       } else {
-        window.alert("다시 입력을 진행하세요")
+        window.alert("다시 입력을 진행하세요");
       }
-      
     }
   };
 
@@ -234,7 +244,7 @@ function Signup() {
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
+              id="nickname"
               type="text"
               placeholder="nickname"
               value={formData.nickname}

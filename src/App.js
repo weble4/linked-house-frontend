@@ -7,6 +7,13 @@ import Main from "./components/Main";
 import Certified from "./components/Certified";
 import HostPages from "./components/host/HostPages";
 import HouseManagement from "./components/host/HouseManagement";
+import HouseRegist from "./components/host/HouseRegist";
+import Userpage from "./components/user/Userpage";
+import Private from "./components/user/Private";
+import ProfileEditor from "./components/user/ProfileEditor";
+import BookmarkList from "./components/user/BookmarkList";
+import "./userpage.css";
+import HouseUpdateForm from "./components/host/HouseUpdateForm";
 import Userpage from "./components/Userpage";
 import Private from './components/Private';
 import ProfileEditor from './components/ProfileEditor';
@@ -42,10 +49,9 @@ const App = () => {
           <Route path="/profile" element={<ProfileEditor />} />
           <Route path="/bookmark" element={<BookmarkList />} />
 
-          <Route
-            path="/host-settings/house-management"
-            element={<HouseManagement />}
-          />
+          <Route path="/house-management" element={<HouseManagement />} />
+          <Route path="/house-regist" element={<HouseRegist />} />
+          <Route path="/house-update" element={<HouseUpdateForm />} />
         </Routes>
       </div>
     </Router>
