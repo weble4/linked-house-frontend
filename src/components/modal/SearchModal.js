@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SearchModal = ({ setShowModal }) => {
     // 인원수 등 조건 증감 관련
@@ -52,7 +52,7 @@ const SearchModal = ({ setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:8080/api/house";
+        const url = "http://localhost:8080/api/houses";
         const params = `?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
 
         try {
@@ -65,8 +65,7 @@ const SearchModal = ({ setShowModal }) => {
             const data = response.data;
             console.log("반환 데이터 : ", data);
 
-            const searchResult = `/api/house/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
-            navigate(searchResult);
+            navigate(`/houses/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`);
         } catch (error) {
             console.log("검색에 실패했습니다.");
         }
