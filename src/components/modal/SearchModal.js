@@ -8,6 +8,7 @@ const SearchModal = ({ setShowModal }) => {
     const [room, setRoom] = useState(1);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [minPrice, setMinPrice] = useState(0);
+    const [filterKeyword, setFilterKeyword] = useState("seoul");
 
     const bedMinusCount = () => {
         if (bed === 1) {
@@ -52,7 +53,7 @@ const SearchModal = ({ setShowModal }) => {
         e.preventDefault();
 
         const url = "http://localhost:8080/api/house";
-        const params = `?room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+        const params = `?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
 
         try {
             const response = await axios.get(url + params, {
@@ -64,7 +65,7 @@ const SearchModal = ({ setShowModal }) => {
             const data = response.data;
             console.log("반환 데이터 : ", data);
 
-            const searchResult = `/api/house/?room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+            const searchResult = `/api/house/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
             navigate(searchResult);
         } catch (error) {
             console.log("검색에 실패했습니다.");
@@ -83,6 +84,58 @@ const SearchModal = ({ setShowModal }) => {
                         </div>
                         {/*body*/}
                         <div className="relative p-6 flex-auto">
+                            <div>
+                                <span className="mx-8">지역 선택</span>
+                                <select
+                                    className="px-16 py-3 border rounded-md"
+                                    id="filterKeyword"
+                                    onChange={(e) => setFilterKeyword(e.target.value)}
+                                    value={filterKeyword}
+                                >
+                                    <option key="seoul" value="seoul">
+                                        서울
+                                    </option>
+                                    <option key="sejong" value="sejong">
+                                        세종
+                                    </option>
+                                    <option key="incheon" value="incheon">
+                                        인천
+                                    </option>
+                                    <option key="daejeon" value="daejeon">
+                                        대전
+                                    </option>
+                                    <option key="gwangju" value="gwangju">
+                                        광주
+                                    </option>
+                                    <option key="busan" value="busan">
+                                        부산
+                                    </option>
+                                    <option key="daegu" value="daegu">
+                                        대구
+                                    </option>
+                                    <option key="ulsan" value="ulsan">
+                                        울산
+                                    </option>
+                                    <option key="gyeonggido" value="gyeonggido">
+                                        경기도
+                                    </option>
+                                    <option key="gangwondo" value="gangwondo">
+                                        강원도
+                                    </option>
+                                    <option key="chungcheongdo" value="chungcheongdo">
+                                        충청도
+                                    </option>
+                                    <option key="jeollado" value="jeollado">
+                                        전라도
+                                    </option>
+                                    <option key="gyeongsangdo" value="gyeongsangdo">
+                                        경상도
+                                    </option>
+                                    <option key="jeju" value="jeju">
+                                        제주도
+                                    </option>
+                                </select>
+                            </div>
                             <div>
                                 <span className="mx-8">방 갯수</span>
 
@@ -144,7 +197,6 @@ const SearchModal = ({ setShowModal }) => {
                                 className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                 type="button"
                                 onClick={(e) => handleSubmit(e)}
-                                oncli
                             >
                                 검색
                             </button>

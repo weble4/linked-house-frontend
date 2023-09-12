@@ -14,6 +14,14 @@ import ProfileEditor from "./components/user/ProfileEditor";
 import BookmarkList from "./components/user/BookmarkList";
 import "./userpage.css";
 import HouseUpdateForm from "./components/host/HouseUpdateForm";
+import Userpage from "./components/Userpage";
+import Private from './components/Private';
+import ProfileEditor from './components/ProfileEditor';
+import BookmarkList from './components/BookmarkList';
+import './userpage.css';
+import './private.css';
+import './profileEditor.css';
+import './bookmark.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
