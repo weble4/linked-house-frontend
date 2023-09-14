@@ -13,6 +13,7 @@ import Private from "./components/user/Private";
 import ProfileEditor from "./components/user/ProfileEditor";
 import BookmarkList from "./components/user/BookmarkList";
 import HouseUpdateForm from "./components/host/HouseUpdateForm";
+import ReservationSetting from "./components/host/ReservationSetting";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -42,7 +43,9 @@ const App = () => {
 
           <Route path="/house-management" element={<HouseManagement />} />
           <Route path="/house-regist" element={<HouseRegist />} />
-          <Route path="/house-update" element={<HouseUpdateForm />} />
+          <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
+          <Route path="/reservation-settings" element={<ReservationSetting />}
+          />
         </Routes>
       </div>
     </Router>
