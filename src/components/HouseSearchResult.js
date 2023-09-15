@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const HouseSearchResult = () => {
     // Parameter 가져오기
@@ -13,13 +13,6 @@ const HouseSearchResult = () => {
     const maxPrice = searchParams.get("maxPrice");
     const minPrice = searchParams.get("minPrice");
 
-    const data = {
-        room,
-        bed,
-        maxPrice,
-        minPrice,
-    };
-
     const [houses, setHouses] = useState([]);
     const [page, setPage] = useState(0);
     const [pageSize, setPageSize] = useState(20);
@@ -28,28 +21,36 @@ const HouseSearchResult = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const response = axios
-            .get(
-                `http://localhost:8080/api/houses?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`,
-                {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/houses`, {
+                    params: {
+                        location,
+                        minPrice,
+                        maxPrice,
+                        room,
+                        bed,
+                    },
                     withCredentials: true,
                     headers: {
                         "Content-Type": "application/json",
                     },
-                },
-            )
-            .then((response) => {
-                const { content, totalPages } = response.data;
+                });
+
+                const { data } = response;
+                const { content, totalPages } = data;
                 setIsLoading(false);
                 setHouses(content);
                 setTotalPages(totalPages);
                 console.log(content);
-            })
-            .catch((error) => {
-                console.log("Fetch Error", error);
+            } catch (error) {
+                console.error("Fetch Error", error);
                 setIsLoading(false);
-            });
-    }, [page, pageSize]);
+            }
+        };
+
+        fetchData();
+    }, [location, minPrice, maxPrice, room, bed, page, pageSize]);
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
@@ -61,22 +62,26 @@ const HouseSearchResult = () => {
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    houses.map((house) => (
-                        <li key={house.rentalId}>
-                            <div>
-                                <h3>{house.description}</h3>
-                                <img src={house.imagePath} alt={house.name} />
-                            </div>
-                        </li>
-                    ))
+                    <>
+                        {houses.length === 0 ? (
+                            <p>검색 조건에 해당하는 숙박 업소가 존재하지 않습니다.</p>
+                        ) : (
+                            houses.map((house) => (
+                                <li key={house.rentalId}>
+                                    <div>
+                                        <h3>{house.description}</h3>
+                                        <img src={house.imagePath} alt={house.name} />
+                                    </div>
+                                </li>
+                            ))
+                        )}
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button key={index} onClick={() => handlePageChange(index)}>
+                                {index + 1}
+                            </button>
+                        ))}
+                    </>
                 )}
-            </div>
-            <div>
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button key={index} onClick={() => handlePageChange(index)}>
-                        {index + 1}
-                    </button>
-                ))}
             </div>
         </div>
     );

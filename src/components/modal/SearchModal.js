@@ -1,6 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchModal = ({ setShowModal }) => {
     // 인원수 등 조건 증감 관련
@@ -49,12 +48,10 @@ const SearchModal = ({ setShowModal }) => {
     const navigate = useNavigate();
 
     // 서버로 보내주기
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = () => {
         const params = `?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
-
-        window.location.href = `/houses/${params}`;
+        const url = `/houses${params}`;
+        window.location.href = url;
     };
 
     return (
