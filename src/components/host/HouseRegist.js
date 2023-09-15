@@ -89,9 +89,6 @@ const HouseRegist = () => {
     }
 
     const accessToken = localStorage.getItem("accessToken");
-    console.log(request);
-    console.log(formDataToSend);
-    console.log(imageFiles);
 
     try {
       const config = {

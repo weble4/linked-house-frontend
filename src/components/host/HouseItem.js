@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HouseItem = ({ house }) => {
   const { rentalId, description, location, price, imagePath } = house;
-  console.log(house)
+
   return (
     <div className="flex items-center hover:bg-gray-100 p-4 mb-4">
       {imagePath && (
@@ -20,11 +20,21 @@ const HouseItem = ({ house }) => {
         <p className="text-gray-600">위치: {location}</p>
         <p className="text-gray-600">가격: {price}</p>
         <Link to={`/house-details/${rentalId}`} className="text-blue-500">
-          상세보기
+          <button className="bg-blue-500 text-white px-3 py-1 rounded">
+            상세보기
+          </button>
+        </Link>
+
+        <Link
+          to={{ pathname: `/house-update/${rentalId}`}}
+          className="text-green-500 ml-2"
+        >
+          <button className="bg-green-500 text-white px-3 py-1 rounded">
+            수정
+          </button>
         </Link>
       </div>
     </div>
   );
 };
-
 export default HouseItem;

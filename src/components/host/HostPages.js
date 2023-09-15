@@ -45,16 +45,6 @@ const HostPages = () => {
             예약 방법을 설정하세요.
           </p>
         </Link>
-        <Link
-          to="/house-update"
-          className="p-8 bg-white rounded-xl shadow-xl hover:bg-gray-100 h-60 flex flex-col justify-between"
-        >
-          <h2 className="text-2xl font-semibold mb-4">하우스 정보 수정</h2>
-          <p className="text-lg">
-            하우스 정보 수정 페이지 입니다. 당신의 하우스를 최신 상태로 관리하여
-            주세요.
-          </p>
-        </Link>
       </div>
     </div>
   );
