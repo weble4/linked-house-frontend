@@ -2,20 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const ReservationItem = ({ house }) => {
-  const {
-    rentalId,
-    description,
-    location,
-    price,
-    imagePath,
-    autoReservation,
-    maxCapacity,
-    minCapacity,
-  } = house;
 
   // AutoReservation 상태를 관리할 로컬 state 추가
   const [autoReservationState, setAutoReservationState] =
-    useState(autoReservation);
+    useState(house.autoReservation);
 
   // AutoReservation 수정을 처리하는 함수
   const handleAutoReservationToggle = async () => {
@@ -34,7 +24,7 @@ const ReservationItem = ({ house }) => {
       };
 
       await axios.patch(
-        `http://localhost:8080/api/host/houses/reservation/${rentalId}`,
+        `http://localhost:8080/api/host/houses/reservation/${house.rentalId}`,
         updatedHouse, // 업데이트된 house 객체를 전달
         {
           headers: {
@@ -53,19 +43,19 @@ const ReservationItem = ({ house }) => {
 
   return (
     <div className="flex items-center hover:bg-gray-100 p-4 mb-4">
-      {imagePath && (
+      {house.imagePath && (
         <div className="flex-shrink-0 w-24 h-24">
           <img
-            src={imagePath[0]}
+            src={house.imagePath[0]}
             alt={`House`}
             className="w-full h-full object-cover rounded"
           />
         </div>
       )}
       <div className="ml-4">
-        <h2 className="text-xl font-semibold">{description}</h2>
-        <p className="text-gray-600">위치: {location}</p>
-        <p className="text-gray-600">가격: {price}</p>
+        <h2 className="text-xl font-semibold">{house.description}</h2>
+        <p className="text-gray-600">위치: {house.location}</p>
+        <p className="text-gray-600">가격: {house.price}</p>
         {/* AutoReservation 상태에 따라 표시되는 단추 */}
         <button
           className={`${
