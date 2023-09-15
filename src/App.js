@@ -16,6 +16,7 @@ import "./private.css";
 import "./profileEditor.css";
 import "./bookmark.css";
 import HouseSearchResult from "./components/HouseSearchResult";
+import SearchModal from "./components/modal/SearchModal";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -42,7 +43,8 @@ const App = () => {
                     <Route path="/private" element={<Private />} />
                     <Route path="/profile" element={<ProfileEditor />} />
                     <Route path="/bookmark" element={<BookmarkList />} />
-                    <Route path="/houses/:filterKeyword/*" element={<HouseSearchResult />} />
+                    <Route path="" element={<SearchModal />} />
+                    <Route path="/houses/" element={<HouseSearchResult />} />
 
                     <Route path="/host-settings/house-management" element={<HouseManagement />} />
                 </Routes>

@@ -8,7 +8,7 @@ const SearchModal = ({ setShowModal }) => {
     const [room, setRoom] = useState(1);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [minPrice, setMinPrice] = useState(0);
-    const [filterKeyword, setFilterKeyword] = useState("seoul");
+    const [location, setLocation] = useState("seoul");
 
     const bedMinusCount = () => {
         if (bed === 1) {
@@ -52,23 +52,9 @@ const SearchModal = ({ setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:8080/api/houses";
-        const params = `?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+        const params = `?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
 
-        try {
-            const response = await axios.get(url + params, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            const data = response.data;
-            console.log("반환 데이터 : ", data);
-
-            navigate(`/houses/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`);
-        } catch (error) {
-            console.log("검색에 실패했습니다.");
-        }
+        window.location.href = `/houses/${params}`;
     };
 
     return (
@@ -87,9 +73,9 @@ const SearchModal = ({ setShowModal }) => {
                                 <span className="mx-8">지역 선택</span>
                                 <select
                                     className="px-16 py-3 border rounded-md"
-                                    id="filterKeyword"
-                                    onChange={(e) => setFilterKeyword(e.target.value)}
-                                    value={filterKeyword}
+                                    id="location"
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    value={location}
                                 >
                                     <option key="seoul" value="seoul">
                                         서울

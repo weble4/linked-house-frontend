@@ -1,49 +1,83 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const HouseSearchResult = () => {
-    const [searchParams] = useSearchParams();
-    const filterKeyword = searchParams.get("filterKeyword");
+    // Parameter 가져오기
+    const reactLocation = useLocation();
+    const searchParams = new URLSearchParams(reactLocation.search);
+
+    const location = searchParams.get("location");
     const room = searchParams.get("room");
     const bed = searchParams.get("bed");
     const maxPrice = searchParams.get("maxPrice");
     const minPrice = searchParams.get("minPrice");
 
-    const [houses, setHouses] = useState([]);
+    const data = {
+        room,
+        bed,
+        maxPrice,
+        minPrice,
+    };
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(
-                `https://localhost:8080/api/houses?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`,
+    const [houses, setHouses] = useState([]);
+    const [page, setPage] = useState(0);
+    const [pageSize, setPageSize] = useState(20);
+    const [totalPages, setTotalPages] = useState(0);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const response = axios
+            .get(
+                `http://localhost:8080/api/houses?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`,
                 {
+                    withCredentials: true,
                     headers: {
                         "Content-Type": "application/json",
                     },
                 },
-            );
+            )
+            .then((response) => {
+                const { content, totalPages } = response.data;
+                setIsLoading(false);
+                setHouses(content);
+                setTotalPages(totalPages);
+                console.log(content);
+            })
+            .catch((error) => {
+                console.log("Fetch Error", error);
+                setIsLoading(false);
+            });
+    }, [page, pageSize]);
 
-            // API 응답 데이터 처리
-            const data = response.data;
-            // data를 상태에 설정하거나 화면에 렌더링
-        } catch (error) {
-            // 오류 처리
-            console.log("검색에 실패했습니다.");
-        }
+    const handlePageChange = (newPage) => {
+        setPage(newPage);
     };
-
-    useEffect(() => {
-        fetchData();
-    }, [filterKeyword, room, bed, maxPrice, minPrice]);
 
     return (
         <div>
-            {houses.map(({ description, imagePath }) => (
-                <p>
-                    <div>description: {description}</div>
-                    <div>imagePath: {imagePath}</div>
-                </p>
-            ))}
+            <div>
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : (
+                    houses.map((house) => (
+                        <li key={house.rentalId}>
+                            <div>
+                                <h3>{house.description}</h3>
+                                <img src={house.imagePath} alt={house.name} />
+                            </div>
+                        </li>
+                    ))
+                )}
+            </div>
+            <div>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button key={index} onClick={() => handlePageChange(index)}>
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
