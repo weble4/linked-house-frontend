@@ -16,39 +16,37 @@ import HouseUpdateForm from "./components/host/HouseUpdateForm";
 import ReservationSetting from "./components/host/ReservationSetting";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+    const handleLogin = () => {
+        setIsLoggedIn(true);
+    };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+    };
 
-  return (
-    <Router>
-      <div className="app">
-        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-        <Routes>
-          <Route path="" element={<Main />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/certified" element={<Certified />} />
-          <Route path="/host-settings" element={<HostPages />} />
-          <Route path="/account-settings" element={<Userpage />} />
-          <Route path="/private" element={<Private />} />
-          <Route path="/profile" element={<ProfileEditor />} />
-          <Route path="/bookmark" element={<BookmarkList />} />
-
-          <Route path="/house-management" element={<HouseManagement />} />
-          <Route path="/house-regist" element={<HouseRegist />} />
-          <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
-          <Route path="/reservation-settings" element={<ReservationSetting />}
-          />
-        </Routes>
-      </div>
-    </Router>
+    return (
+        <Router>
+            <div className="app">
+                <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+                <Routes>
+                    <Route path="" element={<Main />} />
+                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/certified" element={<Certified />} />
+                    <Route path="/host-settings" element={<HostPages />} />
+                    <Route path="/account-settings" element={<Userpage />} />
+                    <Route path="/private" element={<Private />} />
+                    <Route path="/profile" element={<ProfileEditor />} />
+                    <Route path="/bookmark" element={<BookmarkList />} />
+                    <Route path="/house-management" element={<HouseManagement />} />
+                    <Route path="/house-regist" element={<HouseRegist />} />
+                    <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
+                    <Route path="/reservation-settings" element={<ReservationSetting />} />
+              </Routes>
+          </div>
+      </Router>
   );
 };
 
