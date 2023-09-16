@@ -15,7 +15,7 @@ const HouseSearchResult = () => {
 
     const [houses, setHouses] = useState([]);
     const [page, setPage] = useState(0);
-    const [pageSize, setPageSize] = useState(20);
+    const pageSize = useState(20);
     const [totalPages, setTotalPages] = useState(0);
 
     const [isLoading, setIsLoading] = useState(true);

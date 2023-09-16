@@ -44,9 +44,6 @@ const SearchModal = ({ setShowModal }) => {
         }
     }, [room, bed]);
 
-    // 결과창으로 이동하는 라우터
-    const navigate = useNavigate();
-
     // 서버로 보내주기
     const handleSubmit = () => {
         const params = `?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
