@@ -37,9 +37,9 @@ const App = () => {
                     <Route path="/certified" element={<Certified />} />
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
-                    <Route path="/private" element={<Private />} />
-                    <Route path="/profile" element={<ProfileEditor />} />
-                    <Route path="/bookmark" element={<BookmarkList />} />
+                    <Route path="/privates" element={<Private />} />
+                    <Route path="/profiles" element={<ProfileEditor />} />
+                    <Route path="/bookmarks" element={<BookmarkList />} />
                     <Route path="/house-management" element={<HouseManagement />} />
                     <Route path="/house-regist" element={<HouseRegist />} />
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />

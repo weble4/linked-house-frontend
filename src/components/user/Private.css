@@ -1,0 +1,54 @@
+/* 입력 그룹 스타일 */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 입력 필드 스타일 */
+.private-input {
+  width: 20%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px; /* Add some space between input fields */
+}
+
+  /* 제목 스타일 */
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  /* 라벨 스타일 */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* 버튼 스타일 */
+  button {
+    background-color: #007bff;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 10px; /* 수정: 좌우 여백을 조절합니다. */
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 5px; /* 수정: 오른쪽 마진을 추가하여 버튼 간격을 조절합니다. */
+  }
+
+  /* 마지막 버튼에는 오른쪽 마진을 추가하지 않습니다. */
+  button:last-child {
+    margin-right: 0;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+
+

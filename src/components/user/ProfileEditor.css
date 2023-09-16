@@ -1,0 +1,43 @@
+/* 입력 그룹 스타일 */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 세로 중앙 정렬 */
+  text-align: center; /* 내부 텍스트 가운데 정렬 */
+}
+
+/* 입력 필드 스타일 */
+.profile-input {
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* 제목 스타일 */
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+/* 라벨 스타일 */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: #007bff;
+  color: black;
+  border: 1px solid #007bff;
+  border-radius: 15px;
+  padding: 8px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center; /* 중앙 정렬 */
+  margin: 0 auto; /* 가로 중앙 정렬 */
+}
