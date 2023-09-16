@@ -7,14 +7,13 @@ import Main from "./components/Main";
 import Certified from "./components/Certified";
 import HostPages from "./components/host/HostPages";
 import HouseManagement from "./components/host/HouseManagement";
-import Userpage from "./components/Userpage";
-import Private from "./components/Private";
-import ProfileEditor from "./components/ProfileEditor";
-import BookmarkList from "./components/BookmarkList";
-import "./userpage.css";
-import "./private.css";
-import "./profileEditor.css";
-import "./bookmark.css";
+import HouseRegist from "./components/host/HouseRegist";
+import Userpage from "./components/user/Userpage";
+import Private from "./components/user/Private";
+import ProfileEditor from "./components/user/ProfileEditor";
+import BookmarkList from "./components/user/BookmarkList";
+import HouseUpdateForm from "./components/host/HouseUpdateForm";
+import ReservationSetting from "./components/host/ReservationSetting";
 import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
 
@@ -45,12 +44,14 @@ const App = () => {
                     <Route path="/bookmark" element={<BookmarkList />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
-
-                    <Route path="/host-settings/house-management" element={<HouseManagement />} />
-                </Routes>
-            </div>
-        </Router>
-    );
+                    <Route path="/house-management" element={<HouseManagement />} />
+                    <Route path="/house-regist" element={<HouseRegist />} />
+                    <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
+                    <Route path="/reservation-settings" element={<ReservationSetting />} />
+              </Routes>
+          </div>
+      </Router>
+  );
 };
 
 export default App;
