@@ -6,7 +6,7 @@ const HostPages = () => {
     <div className="flex justify-center mt-16">
       <div className="grid grid-cols-2 gap-10">
         <Link
-          to="/host-settings/house-management"
+          to="/house-management"
           className="p-8 bg-white rounded-xl shadow-xl hover:bg-gray-100 h-60 flex flex-col justify-between"
         >
           <h2 className="text-2xl font-semibold mb-4">하우스 관리</h2>
@@ -26,7 +26,7 @@ const HostPages = () => {
           </p>
         </Link>
         <Link
-          to="/accommodation-writing"
+          to="/house-regist"
           className="p-8 bg-white rounded-xl shadow-xl hover:bg-gray-100 h-60 flex flex-col justify-between"
         >
           <h2 className="text-2xl font-semibold mb-4">하우스 등록</h2>
@@ -41,8 +41,8 @@ const HostPages = () => {
         >
           <h2 className="text-2xl font-semibold mb-4">예약 설정</h2>
           <p className="text-lg">
-            숙박업소 관련 예약 설정을 위한 페이지입니다. 예약 관련 옵션을
-            설정하세요.
+            숙박업소 관련 예약 설정을 위한 페이지입니다. 하우스 마다 관리 할
+            예약 방법을 설정하세요.
           </p>
         </Link>
       </div>
