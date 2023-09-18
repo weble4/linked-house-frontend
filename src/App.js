@@ -38,9 +38,6 @@ const App = () => {
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
                     <Route path="/profiles" element={<ProfileEditor />} />
-                    <Route path="/private" element={<Private />} />
-                    <Route path="/profile" element={<ProfileEditor />} />
-                    <Route path="/bookmark" element={<BookmarkList />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
                     <Route path="/house-management" element={<HouseManagement />} />
