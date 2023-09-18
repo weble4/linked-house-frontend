@@ -9,9 +9,7 @@ import HostPages from "./components/host/HostPages";
 import HouseManagement from "./components/host/HouseManagement";
 import HouseRegist from "./components/host/HouseRegist";
 import Userpage from "./components/user/Userpage";
-import Private from "./components/user/Private";
 import ProfileEditor from "./components/user/ProfileEditor";
-import BookmarkList from "./components/user/BookmarkList";
 import HouseUpdateForm from "./components/host/HouseUpdateForm";
 import ReservationSetting from "./components/host/ReservationSetting";
 
@@ -37,9 +35,7 @@ const App = () => {
                     <Route path="/certified" element={<Certified />} />
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
-                    <Route path="/privates" element={<Private />} />
                     <Route path="/profiles" element={<ProfileEditor />} />
-                    <Route path="/bookmarks" element={<BookmarkList />} />
                     <Route path="/house-management" element={<HouseManagement />} />
                     <Route path="/house-regist" element={<HouseRegist />} />
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
