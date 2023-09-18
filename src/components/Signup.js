@@ -48,7 +48,8 @@ function Signup() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/customers/check-email?email=${formData.customerEmail}`
+        `http://110.165.18.244/api/customers/check-email?email=${formData.customerEmail}`
+        // `http://localhost:8080/api/customers/check-email?email=${formData.customerEmail}`
       );
       setEmailError(null); // Clear any previous email error
       setEmailExists(response.data);
@@ -83,7 +84,8 @@ function Signup() {
       window.alert("이메일 발송 중입니다..알림창을 끄고 잠시만 기다려주세요");
 
       const response = await axios.post(
-        "http://localhost:8080/api/customers/signup",
+        "http://110.165.18.244:8080/api/customers/signup",
+        // "http://localhost:8080/api/customers/signup",
         formData
       );
 
