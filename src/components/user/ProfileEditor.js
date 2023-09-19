@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProfileEditor.css';
 
 function ProfileEditor() {
-  const [name, setName] = useState('');
-  const [profileText, setProfileText] = useState('');
-  const [birthdate, setBirthdate] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState('');
-  const [isProfilePublic, setIsProfilePublic] = useState(false);
+  // 이전에 저장된 프로필 데이터를 로컬 스토리지에서 가져옵니다.
+  const storedProfile = JSON.parse(localStorage.getItem('profile')) || {};
+
+  const [name, setName] = useState(storedProfile.name || '');
+  const [profileText, setProfileText] = useState(storedProfile.profileText || '');
+  const [birthdate, setBirthdate] = useState(storedProfile.birthdate || '');
+  const [phoneNumber, setPhoneNumber] = useState(storedProfile.phoneNumber || '');
+  const [gender, setGender] = useState(storedProfile.gender || '');
+  const [isProfilePublic, setIsProfilePublic] = useState(storedProfile.isProfilePublic || false);
   const [isSaved, setIsSaved] = useState(false);
 
   const handleNameChange = (e) => {
@@ -41,18 +44,62 @@ function ProfileEditor() {
     setIsSaved(true);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSave();
+    }
+  };
+
+  // 컴포넌트가 업데이트될 때마다 현재 프로필 데이터를 로컬 스토리지에 저장합니다.
+  useEffect(() => {
+    localStorage.setItem(
+      'profile',
+      JSON.stringify({
+        name,
+        profileText,
+        birthdate,
+        phoneNumber,
+        gender,
+        isProfilePublic,
+      })
+    );
+  }, [name, profileText, birthdate, phoneNumber, gender, isProfilePublic]);
+
   return (
     <div className="profile-container">
       <h1 className="profile-title">프로필</h1>
       <div className="form-group">
         <label className="profile-label">이름:</label>
-        <input className="profile-input" type="text" value={name} onChange={handleNameChange} />
+        <input
+          className="profile-input"
+          type="text"
+          value={name}
+          onChange={handleNameChange}
+          onKeyPress={handleKeyPress} // 엔터 키 이벤트 처리
+        />
         <label className="profile-label">자기소개:</label>
-        <textarea className="profile-input" value={profileText} onChange={handleProfileTextChange} />
+        <textarea
+          className="profile-input"
+          value={profileText}
+          onChange={handleProfileTextChange}
+          onKeyPress={handleKeyPress} // 엔터 키 이벤트 처리
+        />
         <label className="profile-label">생년월일:</label>
-        <input className="profile-input" type="text" value={birthdate} onChange={handleBirthdateChange} />
+        <input
+          className="profile-input"
+          type="text"
+          value={birthdate}
+          onChange={handleBirthdateChange}
+          onKeyPress={handleKeyPress} // 엔터 키 이벤트 처리
+        />
         <label className="profile-label">전화번호:</label>
-        <input className="profile-input" type="text" value={phoneNumber} onChange={handlePhoneNumberChange} />
+        <input
+          className="profile-input"
+          type="text"
+          value={phoneNumber}
+          onChange={handlePhoneNumberChange}
+          onKeyPress={handleKeyPress} // 엔터 키 이벤트 처리
+        />
         <label className="profile-label">성별:</label>
         <div className="gender-container">
           <label className="gender-label" htmlFor="male">
@@ -80,7 +127,12 @@ function ProfileEditor() {
           </label>
         </div>
         <label className="profile-label">프로필 공개 여부:</label>
-        <input type="checkbox" checked={isProfilePublic} onChange={handleProfilePublicChange} />
+        <input
+          type="checkbox"
+          checked={isProfilePublic}
+          onChange={handleProfilePublicChange}
+          onKeyPress={handleKeyPress} // 엔터 키 이벤트 처리
+        />
         <button className="save-button" onClick={handleSave}>저장</button>
       </div>
       {isSaved && (
