@@ -16,6 +16,7 @@ import HouseUpdateForm from "./components/host/HouseUpdateForm";
 import ReservationSetting from "./components/host/ReservationSetting";
 import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
+import HouseDetail from "./components/HouseDetail";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -44,14 +45,15 @@ const App = () => {
                     <Route path="/bookmark" element={<BookmarkList />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
+                    <Route path="/houses/:rentalId" element={<HouseDetail />} />
                     <Route path="/house-management" element={<HouseManagement />} />
                     <Route path="/house-regist" element={<HouseRegist />} />
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
-              </Routes>
-          </div>
-      </Router>
-  );
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
 export default App;

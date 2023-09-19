@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const HouseSearchResult = () => {
     // Parameter 가져오기
@@ -20,37 +20,39 @@ const HouseSearchResult = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const navigate = useNavigate();
+
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/houses`, {
+                params: {
+                    location,
+                    minPrice,
+                    maxPrice,
+                    room,
+                    bed,
+                },
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const { data } = response;
+            const { content, totalPages } = data;
+            setIsLoading(false);
+            setHouses(content);
+            setTotalPages(totalPages);
+            console.log(content);
+        } catch (error) {
+            console.error("Fetch Error", error);
+            setIsLoading(false);
+        }
+    }, [location, minPrice, maxPrice, room, bed]);
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/houses`, {
-                    params: {
-                        location,
-                        minPrice,
-                        maxPrice,
-                        room,
-                        bed,
-                    },
-                    withCredentials: true,
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                });
-
-                const { data } = response;
-                const { content, totalPages } = data;
-                setIsLoading(false);
-                setHouses(content);
-                setTotalPages(totalPages);
-                console.log(content);
-            } catch (error) {
-                console.error("Fetch Error", error);
-                setIsLoading(false);
-            }
-        };
-
         fetchData();
-    }, [location, minPrice, maxPrice, room, bed, page, pageSize]);
+    }, [fetchData]);
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
@@ -70,7 +72,13 @@ const HouseSearchResult = () => {
                                 <li key={house.rentalId}>
                                     <div>
                                         <h3>{house.description}</h3>
-                                        <img src={house.imagePath} alt={house.name} />
+                                        <img
+                                            src={house.imagePath}
+                                            alt={house.name}
+                                            onClick={() => {
+                                                navigate(`/api/houses/${house.rentalId}`);
+                                            }}
+                                        />
                                     </div>
                                 </li>
                             ))
