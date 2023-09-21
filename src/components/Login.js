@@ -32,7 +32,7 @@ const Login = ({ isLoggedIn, onLogin }) => {
         };
 
         try {
-            const response = await axios.post("http://110.165.18.244:8080/api/customers/login", data, {
+            const response = await axios.post("http://10.0.1.6:8080/api/customers/login", data, {
                 headers: {
                     "Content-Type": "application/json",
                 },

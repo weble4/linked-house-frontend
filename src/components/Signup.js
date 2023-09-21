@@ -48,7 +48,7 @@ function Signup() {
 
     try {
       const response = await axios.get(
-        `http://110.165.18.244:8080/api/customers/check-email?email=${formData.customerEmail}`
+        `http://10.0.1.6:8080/api/customers/check-email?email=${formData.customerEmail}`
         // `http://localhost:8080/api/customers/check-email?email=${formData.customerEmail}`
       );
       setEmailError(null); // Clear any previous email error
