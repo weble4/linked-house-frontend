@@ -98,7 +98,7 @@ const HouseRegist = () => {
       };
 
       await axios.post(
-        "http://localhost:8080/api/host/houses",
+        "http://110.165.18.244:8080/api/host/houses",
         formDataToSend,
         config
       );

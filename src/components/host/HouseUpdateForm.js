@@ -21,7 +21,7 @@ const HouseUpdateForm = () => {
     };
 
     axios
-      .get(`http://localhost:8080/api/houses/${rentalId}`, axiosConfig)
+      .get(`http://110.165.18.244:8080/api/houses/${rentalId}`, axiosConfig)
       .then((response) => {
         setHouseData(response.data);
         setEditedData(response.data);
@@ -66,7 +66,7 @@ const HouseUpdateForm = () => {
       };
 
       await axios.patch(
-        `http://localhost:8080/api/host/houses/${rentalId}`,
+        `http://110.165.18.244:8080/api/host/houses/${rentalId}`,
         updateToSend,
         config
       );

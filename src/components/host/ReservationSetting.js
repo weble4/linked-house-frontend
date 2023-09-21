@@ -17,7 +17,7 @@ const ReservationSetting = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:8080/api/host/houses?page=${currentPage}&size=10`, // Fetch 10 records per page
+            `http://110.165.18.244:8080/api/host/houses?page=${currentPage}&size=10`, // Fetch 10 records per page
             { headers }
           );
           setHouses(response.data.content);

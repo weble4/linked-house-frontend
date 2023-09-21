@@ -24,7 +24,7 @@ const ReservationItem = ({ house }) => {
       };
 
       await axios.patch(
-        `http://localhost:8080/api/host/houses/reservation/${house.rentalId}`,
+        `http://110.165.18.244:8080/api/host/houses/reservation/${house.rentalId}`,
         updatedHouse, // 업데이트된 house 객체를 전달
         {
           headers: {

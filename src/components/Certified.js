@@ -15,7 +15,7 @@ const Certified = () => {
 
       axios
         .get(
-          `http://localhost:8080/api/customers/activate-state?customerId=${customerId}`
+          `http://110.165.18.244:8080/api/customers/activate-state?customerId=${customerId}`
         )
         .then((response) => {
           const responseData = response.data.message;
