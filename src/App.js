@@ -9,13 +9,11 @@ import HostPages from "./components/host/HostPages";
 import HouseManagement from "./components/host/HouseManagement";
 import HouseRegist from "./components/host/HouseRegist";
 import Userpage from "./components/user/Userpage";
+import Private from "./components/user/Private";
 import ProfileEditor from "./components/user/ProfileEditor";
+import BookmarkList from "./components/user/BookmarkList";
 import HouseUpdateForm from "./components/host/HouseUpdateForm";
 import ReservationSetting from "./components/host/ReservationSetting";
-import HouseSearchResult from "./components/HouseSearchResult";
-import SearchModal from "./components/modal/SearchModal";
-import ChatApp from "./components/user/ChatApp";
-import Private from "./components/user/Private";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -39,15 +37,13 @@ const App = () => {
                     <Route path="/certified" element={<Certified />} />
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
-                    <Route path="/profiles" element={<ProfileEditor />} />
-                    <Route path="" element={<SearchModal />} />
-                    <Route path="/houses/" element={<HouseSearchResult />} />
+                    <Route path="/private" element={<Private />} />
+                    <Route path="/profile" element={<ProfileEditor />} />
+                    <Route path="/bookmark" element={<BookmarkList />} />
                     <Route path="/house-management" element={<HouseManagement />} />
                     <Route path="/house-regist" element={<HouseRegist />} />
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
-                    <Route path="/messages" element={<ChatApp />} />
-                    <Route path="/privates" element={<Private />} />
               </Routes>
           </div>
       </Router>
