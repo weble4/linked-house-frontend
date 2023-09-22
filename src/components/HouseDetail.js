@@ -76,7 +76,7 @@ const HouseDetail = () => {
       }
     };
     fetchData();
-  }, [rentalId]);
+  }, []);
 
   // 더보기 버튼 클릭 시 이미지 더보기 활성화
   const handleShowMore = () => {
