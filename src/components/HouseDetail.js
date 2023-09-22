@@ -30,6 +30,7 @@ const HouseDetail = () => {
   }
 
   useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
     const fetchData = async () => {
       try {
         // House fetch
@@ -76,7 +77,7 @@ const HouseDetail = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [rentalId]);
 
   // 더보기 버튼 클릭 시 이미지 더보기 활성화
   const handleShowMore = () => {
@@ -84,6 +85,7 @@ const HouseDetail = () => {
   };
 
   const addBookmark = async () => {
+    const accessToken = localStorage.getItem("accessToken");
     try {
       await axios.post(
         `http://localhost:8080/api/bookmarks/${rentalId}`,
@@ -123,7 +125,7 @@ const HouseDetail = () => {
         checkoutDate: checkoutDate,
         reservationNum: reservationNum,
       };
-
+      const accessToken = localStorage.getItem("accessToken");
       await axios.post(
         `http://localhost:8080/api/reservations/customer/${rentalId}`,
         reservationData,
