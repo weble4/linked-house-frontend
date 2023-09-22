@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchModal = ({ setShowModal }) => {
     // 인원수 등 조건 증감 관련
@@ -6,7 +8,7 @@ const SearchModal = ({ setShowModal }) => {
     const [room, setRoom] = useState(1);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [minPrice, setMinPrice] = useState(0);
-    const [location, setLocation] = useState("seoul");
+    const [filterKeyword, setFilterKeyword] = useState("seoul");
 
     const bedMinusCount = () => {
         if (bed === 1) {
@@ -43,11 +45,31 @@ const SearchModal = ({ setShowModal }) => {
         }
     }, [room, bed]);
 
+    // 결과창으로 이동하는 라우터
+    const navigate = useNavigate();
+
     // 서버로 보내주기
-    const handleSubmit = () => {
-        const params = `?location=${location}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
-        const url = `/houses${params}`;
-        window.location.href = url;
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const url = "http://localhost:8080/api/house";
+        const params = `?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+
+        try {
+            const response = await axios.get(url + params, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = response.data;
+            console.log("반환 데이터 : ", data);
+
+            const searchResult = `/api/house/?filterKeyword=${filterKeyword}&room=${room}&bed=${bed}&maxPrice=${maxPrice}&minPrice=${minPrice}`;
+            navigate(searchResult);
+        } catch (error) {
+            console.log("검색에 실패했습니다.");
+        }
     };
 
     return (
@@ -66,9 +88,9 @@ const SearchModal = ({ setShowModal }) => {
                                 <span className="mx-8">지역 선택</span>
                                 <select
                                     className="px-16 py-3 border rounded-md"
-                                    id="location"
-                                    onChange={(e) => setLocation(e.target.value)}
-                                    value={location}
+                                    id="filterKeyword"
+                                    onChange={(e) => setFilterKeyword(e.target.value)}
+                                    value={filterKeyword}
                                 >
                                     <option key="seoul" value="seoul">
                                         서울
