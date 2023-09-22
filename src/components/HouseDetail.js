@@ -24,8 +24,10 @@ const HouseDetail = () => {
     !!accessToken && tokenExpiration && currentTime < tokenExpiration
   );
 
-  // const nickname = house.host.nickname;
-  // console.log(nickname);
+  console.log(bookmark);
+  if (currentTime < tokenExpiration) {
+    setIsLoggedInLocalStorage(false);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -150,11 +152,6 @@ const HouseDetail = () => {
         <button onClick={onClose}>닫기</button>
       </div>
     );
-  };
-
-  const formatDateTimeForInput = (dateTime) => {
-    const formattedDateTime = dateTime.replace(" ", "T"); // Replace space with 'T' to match format
-    return formattedDateTime;
   };
 
   return (
