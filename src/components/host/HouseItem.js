@@ -19,7 +19,7 @@ const HouseItem = ({ house }) => {
         <h2 className="text-xl font-semibold">{description}</h2>
         <p className="text-gray-600">위치: {location}</p>
         <p className="text-gray-600">가격: {price}</p>
-        <Link to={`/house-details/${rentalId}`} className="text-blue-500">
+        <Link to={`/houses/${rentalId}`} className="text-blue-500">
           <button className="bg-blue-500 text-white px-3 py-1 rounded">
             상세보기
           </button>
