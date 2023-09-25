@@ -45,7 +45,7 @@ const App = () => {
                     <Route path="/profile" element={<ProfileEditor />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
-                    <Route path="/houses/:rentalId" element={<HouseDetail />} />
+                    <Route path="/houses/1" element={<HouseDetail />} />
                     <Route path="/house-management" element={<HouseManagement />} />
                     <Route path="/house-regist" element={<HouseRegist />} />
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
