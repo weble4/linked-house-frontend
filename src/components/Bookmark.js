@@ -12,7 +12,9 @@ const Bookmark = () => {
     const currentTime = Date.now();
     const [isLoggedInLocalStorage, setIsLoggedInLocalStorage] = useState(!!accessToken && tokenExpiration && currentTime < tokenExpiration);
     const navigate = useNavigate();
-
+    if (currentTime < tokenExpiration) {
+        setIsLoggedInLocalStorage(false);
+    }
     const fetchData = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:8080/api/bookmarks`, {
