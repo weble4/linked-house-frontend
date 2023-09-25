@@ -71,7 +71,7 @@ const HouseSearchResult = () => {
                             <p>검색 조건에 해당하는 숙박 업소가 존재하지 않습니다.</p>
                         ) : (
                             houses.map((house) => (
-                                <li key={house.rentalId}>
+                                <li key={house.rentalId} className="p-8 m-8 border rounded-md">
                                     <div>
                                         <h3>{house.description}</h3>
                                         <img
@@ -86,7 +86,7 @@ const HouseSearchResult = () => {
                             ))
                         )}
                         {Array.from({ length: totalPages }, (_, index) => (
-                            <button key={index} onClick={() => handlePageChange(index)}>
+                            <button key={index} onClick={() => handlePageChange(index)} className="mx-4 my-8">
                                 {index + 1}
                             </button>
                         ))}
