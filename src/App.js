@@ -22,6 +22,7 @@ import AdminPage from "./components/admin/AdminPage";
 import HostApplication from "./components/user/HostApplication";
 import Review from "./components/user/Review";
 import Notification from "./components/user/Notification";
+import Reservation from "./components/user/Reservation";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -60,6 +61,7 @@ const App = () => {
                     <Route path="/hosts" element={<HostApplication />} />
                     <Route path="/reviews" element={<Review />} />
                     <Route path="/notifications" element={<Notification />} />
+                    <Route path="/reservations" element={<Reservation />} />
                 </Routes>
             </div>
         </Router>
