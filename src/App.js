@@ -19,6 +19,7 @@ import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
 import Bookmark from "./components/Bookmark";
 import Review from "./components/user/Review";
+import Notification from "./components/user/Notification";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -54,6 +55,7 @@ const App = () => {
                     <Route path="/reservation-management" element={<ReservationManagement />} />
                     <Route path="/bookmarks" element={<Bookmark />} />
                     <Route path="/reviews" element={<Review />} />
+                    <Route path="/notifications" element={<Notification />} />
                 </Routes>
             </div>
         </Router>
