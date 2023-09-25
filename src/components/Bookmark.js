@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Hotel1 from "./images/hotel1.jpg";
-import Hotel2 from "./images/hotel2.jpg";
-import Hotel3 from "./images/hotel3.jpg";
+import Hotel6 from "./images/hotel6.png";
+import Hotel7 from "./images/hotel7.png";
+import Hotel8 from "./images/hotel8.png";
 
 // 더미 데이터
 const dummyHouses = [
     {
         rentalId: 1,
         description: "서울역과 가까운 호텔",
-        imagePath: Hotel1, // 이미지 경로 수정
+        imagePath: Hotel6, // 이미지 경로 수정
     },
     {
         rentalId: 2,
         description: "5성급 호텔",
-        imagePath: Hotel2, // 이미지 경로 수정
+        imagePath: Hotel7, // 이미지 경로 수정
     },
     {
         rentalId: 3,
         description: "서울 인기있는 호텔",
-        imagePath: Hotel3, // 이미지 경로 수정
+        imagePath: Hotel8, // 이미지 경로 수정
     },
     // 더 많은 더미 데이터 추가 가능
 ];
