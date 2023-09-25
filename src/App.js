@@ -17,6 +17,7 @@ import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
+import Bookmark from "./components/Bookmark";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -50,10 +51,11 @@ const App = () => {
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
+                    <Route path="/bookmarks" element={<Bookmark />} />
                 </Routes>
             </div>
         </Router>
-  );
+    );
 };
 
 export default App;
