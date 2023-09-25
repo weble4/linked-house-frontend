@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Login from "./components/Login";
@@ -17,11 +17,8 @@ import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
-import Adminpage from "./components/admin/AdminPage";
-import AdminNotification from "./components/admin/AdminNotification";
-import NotificationList from "./components/admin/NotificationsList";
-import CreateNotification from "./components/admin/CreateNotifications";
 import Bookmark from "./components/Bookmark";
+import AdminPage from "./components/admin/AdminPage";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -55,11 +52,8 @@ const App = () => {
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
-                    <Route path="/adminpage" element={<Adminpage />} />
-                    <Route path="/admin-notification" element={<AdminNotification />} />
-                    <Route path="/admin-notification/list" element={<NotificationList />} />
-                    <Route path="/admin-notification/create" element={<CreateNotification />} />
                     <Route path="/bookmarks" element={<Bookmark />} />
+                    <Route path="/admin-settings" element={<AdminPage />} />
                 </Routes>
             </div>
         </Router>
