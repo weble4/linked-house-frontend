@@ -98,8 +98,12 @@ const HouseDetail = () => {
                 <div className="flex flex-row">
                     <span className="px-8 pb-4 text-sm">호스트에게 연락하기</span>
                     {/** 북마크 추가 버튼 */}
-                    <button className="bookmark px-8 pb-4 text-sm justify-end ml-auto" onClick={handleAddBookmark}>
-                        <img alt="북마크" src={bookmarkIcon} className="h-6 w-6"></img>
+                    <button
+                        className="bookmark px-8 pb-4 text-sm justify-end ml-auto"
+                        onClick={handleAddBookmark}
+                        style={{ border: "none", background: "none" }}
+                    >
+                        <img alt="북마크" src={bookmarkIcon} className="h-6 w-6" />
                     </button>
                 </div>
             </div>
@@ -134,15 +138,15 @@ const HouseDetail = () => {
                 {/** 설명 */}
                 <div className="p-8 flex-4 border rounded-md mr-8">
                     <div className="flex flex-row">
-                        <span>님의 방</span>
+                        <span className="font-bold text-2xl">사계절 님의 방</span>
                     </div>
-                    <div className="text-sm">
+                    <div className="text-xl">
                         최소인원 {house.minCapacity}명 - 최대인원 {house.maxCapacity}명 - 침실 {house.room}개 - 침대 {house.bed}개 - 욕실{" "}
                         {house.bathRoom}개
                     </div>
-                    <div className="text-sm">위치</div>
                     <br></br>
-                    <p className="text-sm">{house.location}</p>
+                    <div className="text-xl">위치</div>
+                    <p className="text-xl">{house.location}</p>
                 </div>
             </div>
             {/** hr 태그 */}
@@ -153,15 +157,19 @@ const HouseDetail = () => {
             <div className="flex">
                 {/** 리뷰 */}
                 <div className="flex-1">
+                    <span className="p-4 text-xl">평균 평점</span>
+                    <span className="p-4 text-xl">5.0</span>
+                    <hr className="m-8"></hr>
                     {reviews ? (
                         reviews.length === 0 ? (
                             <p className="p-4">리뷰가 없습니다.</p>
                         ) : (
                             reviews.map((review, index) => (
                                 <div key={index}>
-                                    <h3 className="p-4">{review.customer} 님이 작성한 리뷰</h3>
+                                    <h3 className="p-4 font-bold text-xl">{review.customer} 님이 작성한 리뷰</h3>
                                     <div className="p-4 text-sm">{review.title}</div>
-                                    <div className="p-4 text-sm">{review.content}</div>
+                                    <div className="p-4 mx-4 text-sm">{review.content}</div>
+                                    <hr></hr>
                                 </div>
                             ))
                         )
@@ -173,7 +181,7 @@ const HouseDetail = () => {
                 {/** 예약 */}
                 <div className="p-8 flex-2 justify-center items-center border rounded-md mr-8">
                     <div className="px-8 pb-4">
-                        <label className="text-sm">Check-in Date and Time:</label>
+                        <label className="text-sm">체크인</label>
                         <input
                             type="datetime-local"
                             className="w-full p-2 border rounded-md"
@@ -183,7 +191,7 @@ const HouseDetail = () => {
                     </div>
 
                     <div className="px-8 pb-4">
-                        <label className="text-sm">Check-out Date and Time:</label>
+                        <label className="text-sm">체크아웃</label>
                         <input
                             type="datetime-local"
                             className="w-full p-2 border rounded-md"

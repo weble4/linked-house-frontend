@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchModal from "./modal/SearchModal";
+import Logo from "./images/logo_transparent.png";
 
 const Main = () => {
     // Modal 관련
@@ -31,8 +32,13 @@ const Main = () => {
         <>
             <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px:8">
                 {/** Linked-House */}
-                <div className="text-5xl font-extrabold text-center m-8">
-                    <span className="bg-clip-text text-blue-600">Linked-House</span>
+                <div className="">
+                    <img
+                        src={Logo}
+                        alt="로고"
+                        className="mx-auto" // 가로 중앙 정렬을 위한 스타일 추가
+                        style={{ width: "300px", height: "300px" }}
+                    />
                 </div>
                 {/** 폰트 적용 필요 */}
                 <div className="text-3xl font-extrabold text-center m-20">
