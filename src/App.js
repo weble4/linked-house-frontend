@@ -20,6 +20,7 @@ import HouseDetail from "./components/HouseDetail";
 import Bookmark from "./components/Bookmark";
 import AdminPage from "./components/admin/AdminPage";
 import HostApplication from "./components/user/HostApplication";
+import Review from "./components/user/Review";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -56,6 +57,7 @@ const App = () => {
                     <Route path="/bookmarks" element={<Bookmark />} />
                     <Route path="/adminpage" element={<AdminPage />} />
                     <Route path="/hosts" element={<HostApplication />} />
+                    <Route path="/reviews" element={<Review />} />
                 </Routes>
             </div>
         </Router>
