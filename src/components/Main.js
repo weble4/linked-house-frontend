@@ -4,6 +4,8 @@ import Logo from "./images/logo_transparent.png";
 import Hotel1 from "./images/hotel1.jpg";
 import Hotel2 from "./images/hotel2.jpg";
 import Hotel3 from "./images/hotel3.jpg";
+import Hotel4 from "./images/hotel4.jpg";
+import Hotel5 from "./images/hotel5.jpg";
 
 const Main = () => {
     // Modal 관련
@@ -87,6 +89,8 @@ const Main = () => {
                         <img src={Hotel1} alt="House" className="w-96 h-72 m-2 flex-none"></img>
                         <img src={Hotel2} alt="House" className="w-96 h-72 m-2 flex-none"></img>
                         <img src={Hotel3} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel4} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel5} alt="House" className="w-96 h-72 m-2 flex-none"></img>
                         <img
                             src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                             alt="House"
