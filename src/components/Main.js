@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SearchModal from "./modal/SearchModal";
 import Logo from "./images/logo_transparent.png";
+import Hotel1 from "./images/hotel1.jpg";
+import Hotel2 from "./images/hotel2.jpg";
+import Hotel3 from "./images/hotel3.jpg";
 
 const Main = () => {
     // Modal 관련
@@ -66,7 +69,7 @@ const Main = () => {
                             </svg>
 
                             {/* 모달 열기 버튼 */}
-                            <button className="rounded-lg w-full py-10 pl-12 pr-4 border bg-blue-100" onClick={openModal}>
+                            <button className="rounded-lg w-full py-10 pl-12 pr-4 border border-blue-100" onClick={openModal}>
                                 검색
                             </button>
                         </div>
@@ -79,89 +82,33 @@ const Main = () => {
             {/** Todo: 클릭으로 스크롤시 옆으로, 클릭 떼면 스크롤 풀림, 단건 클릭시 이동 */}
             <div>
                 <div>
-                    <div className="h-10 m-10 text-center font-bold">지금 뜨는 여행지</div>
+                    <div className="h-10 m-10 text-center text-3xl font-bold">지금 뜨는 여행지</div>
                     <div className="flex overflow-x-scroll image-list">
+                        <img src={Hotel1} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel2} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel3} alt="House" className="w-96 h-72 m-2 flex-none"></img>
                         <img
                             src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                             alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
+                            className="w-96 h-72 m-2 flex-none"
                         ></img>
                     </div>
+                    <div className="p-8"></div>
                 </div>
+                {/** 
                 <div>
                     <div className="h-10 m-10 text-center font-bold">할인 중인 여행지</div>
                     <div className="flex overflow-x-scroll image-list">
+                        <img src={Hotel1} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel2} alt="House" className="w-96 h-72 m-2 flex-none"></img>
+                        <img src={Hotel3} alt="House" className="w-96 h-72 m-2 flex-none"></img>
                         <img
                             src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                             alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
-                        ></img>
-                        <img
-                            src="https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                            alt="House"
-                            className="w-96 h-96 m-2 flex-none"
+                            className="w-96 h-72 m-2 flex-none"
                         ></img>
                     </div>
-                </div>
+                </div>*/}
             </div>
         </>
     );
