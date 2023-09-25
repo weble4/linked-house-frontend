@@ -74,6 +74,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
               유저 정보
             </button>
             {isProfileMenuOpen && (
+        
               <div className="absolute right-0 mt-2 bg-white border rounded shadow-md">
                 <ul>
                   <li>
@@ -82,9 +83,20 @@ const Header = ({ isLoggedIn, onLogout }) => {
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100 border-b"
                       onClick={closeProfileMenu}
                     >
-                      개인정보
+                      개인 정보
                     </Link>
                   </li>
+
+                  <li>
+                    <Link
+                      to="/admin-settings"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100 border-b"
+                      onClick={closeProfileMenu}
+                    >
+                      관리 정보
+                    </Link>
+                  </li>  
+
                   {userRoles.includes("ROLE_HOST") && (
                     <li>
                       <Link
@@ -96,6 +108,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
                       </Link>
                     </li>
                   )}
+
                   <li>
                     <button
                       onClick={() => {
