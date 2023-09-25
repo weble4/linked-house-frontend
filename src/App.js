@@ -18,6 +18,8 @@ import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
 import Bookmark from "./components/Bookmark";
+import AdminPage from "./components/admin/AdminPage";
+import HostApplication from "./components/user/HostApplication";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -41,8 +43,8 @@ const App = () => {
                     <Route path="/certified" element={<Certified />} />
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
-                    <Route path="/private" element={<Private />} />
-                    <Route path="/profile" element={<ProfileEditor />} />
+                    <Route path="/privates" element={<Private />} />
+                    <Route path="/profiles" element={<ProfileEditor />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
                     <Route path="/houses/result" element={<HouseDetail />} />
@@ -52,6 +54,8 @@ const App = () => {
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
                     <Route path="/bookmarks" element={<Bookmark />} />
+                    <Route path="/adminpage" element={<AdminPage />} />
+                    <Route path="/hosts" element={<HostApplication />} />
                 </Routes>
             </div>
         </Router>
