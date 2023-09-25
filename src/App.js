@@ -17,12 +17,20 @@ import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
-import Bookmark from "./components/Bookmark";
-import AdminPage from "./components/admin/AdminPage";
 import HostApplication from "./components/user/HostApplication";
 import Review from "./components/user/Review";
 import Notification from "./components/user/Notification";
 import Reservation from "./components/user/Reservation";
+import UserReview from "./components/user/UserReview";
+import UserReviewEdit from "./components/user/UserReviewEdit";
+import Adminpage from "./components/admin/AdminPage";
+import AdminNotification from "./components/admin/AdminNotification";
+import NotificationList from "./components/admin/NotificationsList";
+import CreateNotification from "./components/admin/CreateNotifications";
+import Bookmark from "./components/Bookmark";
+import AdminCustomer from "./components/admin/AdminCustomer";
+import AdminReview from "./components/admin/AdminReview";
+import UserListPage from "./components/admin/UserListPage";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -62,6 +70,16 @@ const App = () => {
                     <Route path="/reviews" element={<Review />} />
                     <Route path="/notifications" element={<Notification />} />
                     <Route path="/reservations" element={<Reservation />} />
+                    <Route path="/userReviews" element={<UserReview />} />
+                    <Route path="/userReviewEdit/:reviewId" element={<UserReviewEdit />} />
+                    <Route path="/adminpage" element={<Adminpage />} />
+                    <Route path="/admin-notification" element={<AdminNotification />} />
+                    <Route path="/admin-notification/list" element={<NotificationList />} />
+                    <Route path="/admin-notification/create" element={<CreateNotification />} />
+                    <Route path="/bookmarks" element={<Bookmark />} />
+                    <Route path="/admin-customer" element={<AdminCustomer />} />
+                    <Route path="/admin-review" element={<AdminReview />} />
+                    <Route path="/admin-customer/all" element={<UserListPage />} />
                 </Routes>
             </div>
         </Router>
