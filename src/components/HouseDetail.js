@@ -17,14 +17,14 @@ const dummyHouses = [
         location: "서울, 한국",
         reviews: [
             {
-                customer: "John Doe",
-                title: "Great stay!",
-                content: "I had a wonderful time at this hotel. Highly recommended!",
+                customer: "Choi",
+                title: "5점만점에 5점이에요.",
+                content: " 아주아주 좋았습니다~ 다시한번 꼭 방문하고싶네요최고였습니다!",
             },
             {
-                customer: "Jane Smith",
-                title: "Nice place",
-                content: "The location is perfect, and the room was clean and comfortable.",
+                customer: "Kim",
+                title: "좋은 숙소였습니다.",
+                content: "숙소 위치가 좋아서 관광하기 편했어요. 깨끗하고 아늑한 공간이었어요",
             },
         ],
     },

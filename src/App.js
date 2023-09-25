@@ -18,6 +18,7 @@ import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
 import Bookmark from "./components/Bookmark";
+import Review from "./components/user/Review";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -52,6 +53,7 @@ const App = () => {
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
                     <Route path="/bookmarks" element={<Bookmark />} />
+                    <Route path="/reviews" element={<Review />} />
                 </Routes>
             </div>
         </Router>
