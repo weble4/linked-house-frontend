@@ -17,6 +17,12 @@ import HouseSearchResult from "./components/HouseSearchResult";
 import SearchModal from "./components/modal/SearchModal";
 import Private from "./components/user/Private";
 import HouseDetail from "./components/HouseDetail";
+import UserReview from "./components/user/UserReview";
+import UserReviewEdit from "./components/user/UserReviewEdit";
+import Adminpage from "./components/admin/AdminPage";
+import AdminNotification from "./components/admin/AdminNotification";
+import NotificationList from "./components/admin/NotificationsList";
+import CreateNotification from "./components/admin/CreateNotifications";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -40,8 +46,8 @@ const App = () => {
                     <Route path="/certified" element={<Certified />} />
                     <Route path="/host-settings" element={<HostPages />} />
                     <Route path="/account-settings" element={<Userpage />} />
-                    <Route path="/private" element={<Private />} />
-                    <Route path="/profile" element={<ProfileEditor />} />
+                    <Route path="/privates" element={<Private />} />
+                    <Route path="/profiles" element={<ProfileEditor />} />
                     <Route path="" element={<SearchModal />} />
                     <Route path="/houses/" element={<HouseSearchResult />} />
                     <Route path="/houses/:rentalId" element={<HouseDetail />} />
@@ -50,10 +56,16 @@ const App = () => {
                     <Route path="/house-update/:rentalId" element={<HouseUpdateForm />} />
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
+                    <Route path="/userReviews" element={<UserReview />} />
+                    <Route path="/userReviewEdit/:reviewId" element={<UserReviewEdit />} />
+                    <Route path="/adminpage" element={<Adminpage />} />
+                    <Route path="/admin-notification" element={<AdminNotification />} />
+                    <Route path="/admin-notification/list" element={<NotificationList />} />
+                    <Route path="/admin-notification/create" element={<CreateNotification />} />
                 </Routes>
             </div>
         </Router>
-  );
+    );
 };
 
 export default App;
