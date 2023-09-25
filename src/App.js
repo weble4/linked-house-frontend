@@ -23,6 +23,7 @@ import Adminpage from "./components/admin/AdminPage";
 import AdminNotification from "./components/admin/AdminNotification";
 import NotificationList from "./components/admin/NotificationsList";
 import CreateNotification from "./components/admin/CreateNotifications";
+import Bookmark from "./components/Bookmark";
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize with false
@@ -62,6 +63,7 @@ const App = () => {
                     <Route path="/admin-notification" element={<AdminNotification />} />
                     <Route path="/admin-notification/list" element={<NotificationList />} />
                     <Route path="/admin-notification/create" element={<CreateNotification />} />
+                    <Route path="/bookmarks" element={<Bookmark />} />
                 </Routes>
             </div>
         </Router>
