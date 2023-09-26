@@ -29,21 +29,28 @@ const CreateNotification = () => {
     };
 
     return (
-        <div>
-            <h2>공지사항 작성</h2>
-            <textarea
-                value={notificationContent}
-                onChange={(e) => setNotificationContent(e.target.value)}
-                placeholder="새로운 공지사항을 입력하세요"
-            ></textarea>
-            <button onClick={handleCreateNotification} disabled={!notificationContent}>
-                확인
-            </button>
-            {showSuccessMessage && (
-                <div className="notification">
-                    <p>공지하였습니다.</p>
-                </div>
-            )}
+        <div className="bg-gray-200 min-h-screen flex justify-center items-center">
+            <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                <h2 className="text-2xl font-semibold mb-4 text-center">공지사항 작성</h2>
+                <textarea
+                    value={notificationContent}
+                    onChange={(e) => setNotificationContent(e.target.value)}
+                    className="w-full h-32 p-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                    placeholder="새로운 공지사항을 입력하세요"
+                ></textarea>
+                <button
+                    onClick={handleCreateNotification}
+                    disabled={!notificationContent}
+                    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg focus:outline-none"
+                >
+                    확인
+                </button>
+                {showSuccessMessage && (
+                    <div className="mt-4 p-2 bg-green-100 text-green-700 rounded-lg text-center">
+                        <p>공지하였습니다.</p>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
