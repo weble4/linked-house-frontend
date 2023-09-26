@@ -41,29 +41,26 @@ const NotificationList = () => {
     };
 
     return (
-        <div>
-            <h2>공지사항 목록</h2>
-            <div>
-                <ul>
+        <div className="bg-gray-200 min-h-screen flex justify-center items-center">
+            <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                <h2 className="text-2xl font-semibold mb-4 text-center">공지사항 목록</h2>
+                <ul className="space-y-2">
                     {notifications.map((notification) => (
                         <li
                             key={notification.id}
-                            style={{
-                                border: selectedNotificationId === notification.id ? "2px solid red" : "2px solid transparent", // Transparent border for unselected notifications
-                            }}
+                            className={`p-2 border rounded-lg ${
+                                selectedNotificationId === notification.id
+                                    ? "border-red-500" // Red border for selected notifications
+                                    : "border-transparent"
+                            }`}
                         >
-                            <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "space-between",
-                                }}
-                            >
+                            <div className="flex justify-between items-center">
                                 <span>{notification.title}</span>
                                 <button
                                     onClick={() => {
                                         handleDeleteNotification(notification.id);
                                     }}
+                                    className="text-red-300 hover:text-red-500 bg-yellow-300 hover:bg-yellow-500 rounded-lg px-2 py-1 focus:outline-none"
                                 >
                                     삭제
                                 </button>
@@ -71,7 +68,13 @@ const NotificationList = () => {
                         </li>
                     ))}
                 </ul>
-                <button onClick={handleDeleteSelectedNotification}>선택한 공지사항 삭제</button>
+                <button
+                    onClick={handleDeleteSelectedNotification}
+                    className="w-full mt-4 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg focus:outline-none"
+                    disabled={selectedNotificationId === null}
+                >
+                    선택한 공지사항 삭제
+                </button>
             </div>
         </div>
     );
