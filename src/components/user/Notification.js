@@ -2,8 +2,8 @@ import React from "react";
 
 const dummyNotification = [
     {
-        notificationType: "ALERT",
-        notificationContent: "9월 27일 숙박하신 곳의 리뷰를 작성해 주세요.",
+        notificationType: "NEW",
+        notificationContent: "NEW : 9월 27일 숙박하신 곳의 리뷰를 작성해 주세요.",
     },
     {
         notificationType: "ALERT",

@@ -10,7 +10,7 @@ const dummyHouses = [
     {
         rentalId: 1,
         description: "서울역과 가까운 호텔",
-        imagePath: Hotel2,
+        imagePath: Hotel1,
         minCapacity: 2,
         maxCapacity: 4,
         room: 2,
@@ -92,6 +92,13 @@ const HouseDetail = () => {
             ...prevReview,
             [name]: value,
         }));
+    };
+
+    // 리뷰 삭제 함수
+    const handleReviewDelete = (index) => {
+        const updatedReviews = [...reviews];
+        updatedReviews.splice(index, 1); // 해당 인덱스의 리뷰 삭제
+        house.reviews = updatedReviews; // 업데이트된 리뷰로 설정
     };
 
     const handleReviewSubmit = (event) => {
@@ -245,8 +252,9 @@ const HouseDetail = () => {
                                     <h3 className="p-4 font-bold text-xl">{review.customer} 님이 작성한 리뷰</h3>
                                     <div className="p-4 text-sm">{review.title}</div>
                                     <div className="p-4 mx-4 text-sm">{review.content}</div>
-                                    <hr></hr>
-                                </div>
+                                    {/* Add a delete button for each review */}
+                            <hr></hr>
+                        </div>
                             ))
                         )
                     ) : (
