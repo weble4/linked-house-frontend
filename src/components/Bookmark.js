@@ -1,27 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Hotel6 from "./images/hotel6.png";
-import Hotel7 from "./images/hotel7.png";
-import Hotel8 from "./images/hotel8.png";
+import Hotel1 from "./images/hotel1.jpg";
+import Hotel2 from "./images/hotel2.jpg";
+import Hotel3 from "./images/hotel3.jpg";
+
 
 // 더미 데이터
 const dummyHouses = [
     {
-        rentalId: 1,
-        description: "서울역과 가까운 호텔",
-        imagePath: Hotel6, // 이미지 경로 수정
-    },
-    {
         rentalId: 2,
         description: "5성급 호텔",
-        imagePath: Hotel7, // 이미지 경로 수정
+        imagePath: Hotel2, // 이미지 경로 수정
+        price: "500,000won", // 가격 정보 추가 (예: 200 달러)
+        location: "서울, 한국", // 위치 정보 추가
     },
-    {
-        rentalId: 3,
-        description: "서울 인기있는 호텔",
-        imagePath: Hotel8, // 이미지 경로 수정
-    },
-    // 더 많은 더미 데이터 추가 가능
 ];
 
 const Bookmark = () => {
@@ -65,6 +57,8 @@ const Bookmark = () => {
                                     >
                                         <img src={bookmark.imagePath} alt={bookmark.description} className="w-80 h-100 m-4" />
                                         <p className="m-4">설명: {bookmark.description}</p>
+                                        <p className="m-4">가격: {bookmark.price}</p>
+                                        <p className="m-4">위치: {bookmark.location}</p>
                                         {/* 삭제 버튼 */}
                                         <button
                                             className="m-4"
@@ -87,3 +81,20 @@ const Bookmark = () => {
 };
 
 export default Bookmark;
+
+
+
+
+/*
+{
+    rentalId: 2,
+    description: "5성급 호텔",
+    imagePath: Hotel7, // 이미지 경로 수정
+},
+{
+    rentalId: 3,
+    description: "서울 인기있는 호텔",
+    imagePath: Hotel8, // 이미지 경로 수정
+},
+// 더 많은 더미 데이터 추가 가능
+*/

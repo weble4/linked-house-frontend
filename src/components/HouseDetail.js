@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import bookmarkIcon from "./images/bookmark.png";
+import { FiBookmark, FiBookmarkOff } from 'react-icons/fi'; // Import 필요한 아이콘
 import Hotel1 from "./images/hotel1.jpg";
+import Hotel2 from "./images/hotel2.jpg";
+import Hotel3 from "./images/hotel3.jpg";
 
 // 더미 데이터
 const dummyHouses = [
     {
         rentalId: 1,
         description: "서울역과 가까운 호텔",
-        imagePath: Hotel1,
+        imagePath: Hotel2,
         minCapacity: 2,
         maxCapacity: 4,
         room: 2,
@@ -17,12 +19,12 @@ const dummyHouses = [
         location: "서울, 한국",
         reviews: [
             {
-                customer: "Choi",
+                customer: "승용",
                 title: "5점만점에 5점이에요.",
-                content: " 아주아주 좋았습니다~ 다시한번 꼭 방문하고싶네요최고였습니다!",
+                content: " 아주아주 좋았습니다~ 다시한번 꼭 방문하고싶네요 최고였습니다!",
             },
             {
-                customer: "Kim",
+                customer: "세기",
                 title: "좋은 숙소였습니다.",
                 content: "숙소 위치가 좋아서 관광하기 편했어요. 깨끗하고 아늑한 공간이었어요",
             },
@@ -34,7 +36,7 @@ const dummyHouses = [
 const HouseDetail = () => {
     //    const { rentalId } = useParams();
     const house = dummyHouses[0]; // 첫 번째 항목 가져오기
-
+    
     const [imagePath] = useState(house ? [house.imagePath] : []);
     const [bookmark, setBookmark] = useState(false); // 북마크 상태를 초기에 false로 설정
     const [showMore, setShowMore] = useState(false);
@@ -43,6 +45,18 @@ const HouseDetail = () => {
     const [checkoutDate, setCheckoutDate] = useState("");
     const [reservationNum, setReservationNum] = useState(1);
     const [reservationSuccess, setReservationSuccess] = useState(false);
+
+    // 리뷰 작성을 위한 상태
+    const [newReview, setNewReview] = useState({
+        customer: '',
+        title: '',
+        content: '',
+    });
+    
+    // 북마크 추가 또는 제거 함수
+    const handleToggleBookmark = () => {
+        setBookmark((prevBookmark) => !prevBookmark);
+    };
 
     // 더보기 버튼 클릭 시 이미지 더보기 활성화
     const handleShowMore = () => {
@@ -72,8 +86,30 @@ const HouseDetail = () => {
         }
     };
 
-    const handleAddBookmark = () => {
-        setBookmark(true); // 북마크 추가
+    const handleReviewChange = (event) => {
+        const { name, value } = event.target;
+        setNewReview((prevReview) => ({
+            ...prevReview,
+            [name]: value,
+        }));
+    };
+
+    const handleReviewSubmit = (event) => {
+        event.preventDefault();
+        // 서버로 새 리뷰를 전송하는 코드를 추가해야 합니다.
+        // 서버에 리뷰를 보내고, 성공하면 리뷰 목록을 다시 불러올 수 있습니다.
+        // 이 부분은 서버와의 통신에 따라 다를 수 있습니다.
+        // 여기에서는 리뷰를 추가하고 더미 데이터를 업데이트합니다.
+
+        const updatedReviews = [...reviews, newReview];
+        // 리뷰 작성 폼 초기화
+        setNewReview({
+            customer: '',
+            title: '',
+            content: '',
+        });
+        // 리뷰 목록 업데이트
+        house.reviews = updatedReviews;
     };
 
     const ReservationSuccessPopup = ({ onClose }) => {
@@ -97,14 +133,6 @@ const HouseDetail = () => {
                 <p className="px-8 py-4 font-extrabold text-2xl">{house.description}</p>
                 <div className="flex flex-row">
                     <span className="px-8 pb-4 text-sm">호스트에게 연락하기</span>
-                    {/** 북마크 추가 버튼 */}
-                    <button
-                        className="bookmark px-8 pb-4 text-sm justify-end ml-auto"
-                        onClick={handleAddBookmark}
-                        style={{ border: "none", background: "none" }}
-                    >
-                        <img alt="북마크" src={bookmarkIcon} className="h-6 w-6" />
-                    </button>
                 </div>
             </div>
             {/** hr 태그 */}
@@ -114,6 +142,15 @@ const HouseDetail = () => {
 
             {/** img */}
             <div className="flex">
+            {/* 북마크 토글 버튼 */}
+                <button
+                    className="bookmark px-8 pb-4 text-sm justify-end ml-auto"
+                    onClick={handleToggleBookmark}
+                    style={{ border: "none", background: "none" }}
+            >
+                    {/* 북마크 상태에 따라 아이콘 변경 */}
+                    <FiBookmark size={24} color={bookmark ? "red" : "gray"} />
+                </button>
                 {/** 첫 번째 이미지 크게 표시 */}
                 <img alt={`img0`} className="px-8 pb-4 flex-1" src={imagePath.length > 0 ? imagePath[0] : ""} style={imageStyle}></img>
                 <div className="flex-1">
@@ -151,6 +188,45 @@ const HouseDetail = () => {
             </div>
             {/** hr 태그 */}
             <div className="p-4">
+                <form onSubmit={handleReviewSubmit}>
+                    <h3 className="font-bold text-xl">리뷰 작성</h3>
+                    <div className="p-2">
+                        <label htmlFor="customer" className="text-sm">
+                            고객 이름:
+                        </label>
+                        <input
+                            type="text"
+                            id="customer"
+                            name="customer"
+                            value={newReview.customer}
+                            onChange={handleReviewChange}
+                        />
+                    </div>
+                    <div className="p-2">
+                        <label htmlFor="title" className="text-sm">
+                            제목:
+                        </label>
+                        <input type="text" id="title" name="title" value={newReview.title} onChange={handleReviewChange} />
+                    </div>
+                    <div className="p-2">
+                        <label htmlFor="content" className="text-sm">
+                            내용:
+                        </label>
+                        <textarea
+                            id="content"
+                            name="content"
+                            rows="4"
+                            cols="50"
+                            value={newReview.content}
+                            onChange={handleReviewChange}
+                        />
+                    </div>
+                    <div className="p-2">
+                        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
+                            리뷰 작성
+                        </button>
+                    </div>
+                </form>
                 <hr></hr>
             </div>
             {/** 리뷰, 예약 버튼 */}

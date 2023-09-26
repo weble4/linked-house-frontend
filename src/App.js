@@ -65,7 +65,6 @@ const App = () => {
                     <Route path="/reservation-settings" element={<ReservationSetting />} />
                     <Route path="/reservation-management" element={<ReservationManagement />} />
                     <Route path="/bookmarks" element={<Bookmark />} />
-                    <Route path="/adminpage" element={<AdminPage />} />
                     <Route path="/hosts" element={<HostApplication />} />
                     <Route path="/reviews" element={<Review />} />
                     <Route path="/notifications" element={<Notification />} />

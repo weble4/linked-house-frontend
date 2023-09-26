@@ -15,13 +15,11 @@ function App() {
     // Define an array of menu items
     const menuItems = [
         { label: "개인정보", path: "/privates", description: "비밀번호 변경 및 계정 삭제" },
-        { label: "메시지", path: "/messages", description: "메시지 채팅창" },
         { label: "프로필", path: "/profiles", description: "프로필 설정 및 공개여부" },
         { label: "예약 확인", path: "/reservations", description: "예약정보 확인하기" },
         { label: "북마크", path: "/bookmarks", description: "즐겨찾기한 숙소 정보 확인하기" },
         { label: "리뷰", path: "/reviews", description: "직접 작성한 리뷰 관리하기" },
         { label: "알림", path: "/notifications", description: "알림 설정 및 확인하기" },
-        { label: "호스트 신청", path: "/hosts", description: "호스트로서 자신의 숙소 등록하기" },
     ];
 
     // Generate menu items using map
