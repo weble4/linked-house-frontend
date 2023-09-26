@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const CreateNotification = () => {
     const [notificationContent, setNotificationContent] = useState("");
     const navigate = useNavigate();
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const handleCreateNotification = async () => {
         try {
             if (notificationContent) {
-                const response = await axios.post("http://localhost:8080/api/admin/notifications", {
-                    content: notificationContent,
-                });
+                // 서버로 공지사항을 전송하거나 다른 필요한 작업 수행
 
-                if (response.status === 200) {
-                    // 서버에서 200으로 응답해야 합니다.
-                    navigate("/admin-notification");
-                } else {
-                    throw new Error("공지사항 작성에 실패했습니다.");
-                }
+                // 공지사항 작성 후 성공 메시지를 표시
+                setShowSuccessMessage(true);
+
+                // 5초 후에 adminpage로 이동
+                setTimeout(() => {
+                    setShowSuccessMessage(false);
+                    navigate("/adminpage");
+                }, 5000); // 5초 대기
+
+                // 공지하였습니다 메시지를 window.alert로 표시
+                window.alert("공지하였습니다.");
             }
         } catch (error) {
             console.error("공지사항 작성에 실패했습니다.", error);
@@ -36,7 +39,11 @@ const CreateNotification = () => {
             <button onClick={handleCreateNotification} disabled={!notificationContent}>
                 확인
             </button>
-            <button onClick={() => navigate("/admin-notification")}>취소</button>
+            {showSuccessMessage && (
+                <div className="notification">
+                    <p>공지하였습니다.</p>
+                </div>
+            )}
         </div>
     );
 };
