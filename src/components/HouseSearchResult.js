@@ -18,7 +18,7 @@ const dummyHouses = [
     },
     {
         rentalId: 3,
-        description: "서울 인기있는 호텔",
+        description: "서울에서 인기있는 호텔",
         imagePath: Hotel3, // 이미지 경로 수정
     },
     // 더 많은 더미 데이터 추가 가능

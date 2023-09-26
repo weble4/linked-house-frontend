@@ -14,19 +14,19 @@ const dummyHouses = [
         location: "서울, 한국",
         reviews: [
             {
-                customer: "Choi",
+                customer: "승용",
                 title: "5점만점에 5점이에요.",
                 content: "아주아주 좋았습니다~ 다시한번 꼭 방문하고싶네요 최고였습니다!",
             },
             {
-                customer: "Choi",
-                title: "만족스러운 숙소",
-                content: "위치도 좋고 시설도 깔끔해서 만족스러웠습니다. 추천합니다!",
+                customer: "세기",
+                title: "좋은 숙소였습니다.",
+                content: "숙소 위치가 좋아서 관광하기 편했어요. 깨끗하고 아늑한 공간이었어요",
             },
             {
-                customer: "Choi",
-                title: "훌륭한 숙소 경험",
-                content: "이 숙소에서의 숙박은 정말 훌륭했습니다. 다음에 또 올게요!",
+                customer: "찬희",
+                title: "훌륭한 숙소입니다.",
+                content: "정말 훌륭했습니다. 다음에 또 올게요",
             },
             // 추가적인 리뷰를 계속해서 추가할 수 있습니다.
         ],
